@@ -16,4 +16,4 @@
 1. 使用者可以透過搜尋餐廳名稱來找到特定的餐廳
 
 ## 專案畫面
-![](https://github.com/GUANYI608/Restaurant-list/public/restauant.jpg)
+![](https://github.com/GUANYI608/Restaurant-list/blob/master/public/img/restaurants.jpg)
