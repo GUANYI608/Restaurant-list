@@ -17,3 +17,14 @@
 
 ## 專案畫面
 ![](https://github.com/GUANYI608/Restaurant-list/blob/master/public/img/restaurants.jpg)
+
+## 使用工具
+開發環境：Visual Studio Code
+執行環境：Node.js
+應用程式架構：Express
+模板引擎：Express-Handlebars
+前端框架：Bootstrap
+圖示資源：Font Awesome
+
+
+
