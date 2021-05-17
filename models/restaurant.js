@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
 const restSchema = new Schema({
   name: {
     type: String,
@@ -9,9 +10,10 @@ const restSchema = new Schema({
   category: String,
   image: String,
   location: String,
-  phone: Number,
+  phone: String,
   google_map: String,
   rating: Number,
   description: String
 })
+
 module.exports = mongoose.model('Restaurant', restSchema)
