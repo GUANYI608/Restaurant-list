@@ -1,6 +1,7 @@
 // require packages used in the project
 const express = require('express')
 const mongoose = require('mongoose')
+const Restaurant = require('./models/restaurant') // 載入Restaurant model
 
 const app = express()
 const port = 3000
@@ -20,7 +21,7 @@ db.once('open', () => {
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json')
+const restaurantList = require('./models/seeds/restaurant.json')
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -31,7 +32,10 @@ app.use(express.static('public'))
 
 // routes setting
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find() //取出model內的所有資料
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 // 顯示單一餐廳資料
 app.get('/restaurant/:restaurant_id', (req, res) => {
