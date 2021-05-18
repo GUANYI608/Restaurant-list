@@ -1,16 +1,14 @@
 // require packages used in the project
 const express = require('express')
+const app = express()
+const port = 3000
 const mongoose = require('mongoose')
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-const restaurantList = require('./models/seeds/restaurant.json')
+const restaurantList = require('./models/seeds/restaurant.json').results
 const bodyParser = require('body-parser')
-
 // 載入Restaurant model
 const Restaurant = require('./models/restaurant')
-
-const app = express()
-const port = 3000
 
 // 設定連線到 mongoDB
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,7 +29,11 @@ app.set('view engine', 'handlebars')
 
 // setting static files
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extend: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
+// start and listen on the Express server
+app.listen(port, () => {
+  console.log(`Express is listening on localhost:${port}`)
+})
 
 // --------routes setting--------
 // 顯示所有餐廳資料
@@ -52,11 +54,12 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.log(error))
 })
 // 顯示單一餐廳資料
-app.get('/restaurant/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(
-    restaurant => restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { restaurant: restaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 // 顯示搜尋結果
 app.get('/search', (req, res) => {
@@ -67,7 +70,3 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
-// start and listen on the Express server
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
-})
