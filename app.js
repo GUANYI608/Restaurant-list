@@ -1,7 +1,13 @@
 // require packages used in the project
 const express = require('express')
 const mongoose = require('mongoose')
-const Restaurant = require('./models/restaurant') // 載入Restaurant model
+// require express-handlebars here
+const exphbs = require('express-handlebars')
+const restaurantList = require('./models/seeds/restaurant.json')
+const bodyParser = require('body-parser')
+
+// 載入Restaurant model
+const Restaurant = require('./models/restaurant')
 
 const app = express()
 const port = 3000
@@ -19,23 +25,31 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-// require express-handlebars here
-const exphbs = require('express-handlebars')
-const restaurantList = require('./models/seeds/restaurant.json')
-
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // setting static files
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extend: true }))
 
-// routes setting
+// --------routes setting--------
+// 顯示所有餐廳資料
 app.get('/', (req, res) => {
   Restaurant.find() //取出model內的所有資料
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.error(error))
+    .catch(error => console.log(error))
+})
+// 新增餐廳
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+app.post('/restaurants', (req, res) => {
+  const name = req.body.name
+  return Restaurant.create({ name })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 // 顯示單一餐廳資料
 app.get('/restaurant/:restaurant_id', (req, res) => {
