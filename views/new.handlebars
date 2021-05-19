@@ -1,4 +1,46 @@
-<form action="/restaurants" method="POST">
-  <input type="text" placeholder="name" name="name">
-  <button type="submit">Create</button>
+<form action="/restaurants" method="POST" class="m-5">
+  <div class="form-group">
+    <label for="name">餐廳名稱</label>
+    <input type="text" class="form-control" id="name" placeholder="餐廳名稱" name="name">
+  </div>
+  <div class="form-group">
+    <label for="category">餐廳類型</label>
+    <select class="form-control" name="category" id="category">
+      <option>請選擇</option>
+      <option>中東料理</option>
+      <option>日本料理</option>
+      <option>義式餐廳</option>
+      <option>美式餐廳</option>
+      <option>酒吧</option>
+      <option>咖啡廳</option>
+      <option>中式料理</option>
+      <option>其他</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="image">餐廳圖片</label>
+    <input type="text" class="form-control" id="image" placeholder="餐廳圖片連結" name="image">
+  </div>
+  <div class="form-group">
+    <label for="location">餐廳位置</label>
+    <input type="text" class="form-control" id="location" placeholder="餐廳位置" name="location">
+  </div>
+  <div class="form-group">
+    <label for="phone">餐廳電話</label>
+    <input type="text" class="form-control" id="phone" placeholder="餐廳電話" name="phone">
+  </div>
+  <div class="form-group">
+    <label for="google_map">餐廳地圖</label>
+    <input type="text" class="form-control" id="google_map" placeholder="餐廳地圖" name="google_map">
+  </div>
+  <div class="form-group">
+    <label for="rating">餐廳評分</label>
+    <input type="text" class="form-control" id="rating" placeholder="餐廳評分" name="rating">
+  </div>
+  <div class="form-group">
+    <label for="description">關於餐廳</label>
+    <textarea type="text" class="form-control" id="description" rows="3" placeholder="關於餐廳"
+      name="description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
