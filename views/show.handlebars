@@ -3,9 +3,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-      <a href="/restaurants/{{ restaurant._id }}/edit">Edit</a>
-      <a href="/">Back</a>
-
+      {{!-- Update, back to index, delete --}}
+      <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-info">Edit</a>
+      <a href="/" class="btn btn-primary">Back</a>
+      <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline; text">
+        <button type="submit" class="btn btn-danger">delete</button>
+      </form>
+      {{!-- restaurant info --}}
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>

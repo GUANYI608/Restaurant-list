@@ -90,6 +90,14 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
+// Delete: 刪除特定餐廳
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log('error'))
+})
 // 顯示搜尋結果
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
