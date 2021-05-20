@@ -14,6 +14,9 @@
 - 描述
 - 圖片
 3. 使用者可以透過搜尋餐廳名稱來找到特定的餐廳
+4. 使用者可以新增餐廳資料
+5. 使用者可以修改餐廳的資訊
+6. 使用者可以刪除餐廳資料
 
 ## 專案畫面
 ![](https://github.com/GUANYI608/Restaurant-list/blob/master/public/img/restaurants.jpg)
