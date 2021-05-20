@@ -1,10 +1,10 @@
 <!-- ./views/index.handlebars -->
-<!-- Create data for new restaurant-->
-<a href="./restaurants/new">Create</a>
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
+      <!-- Create data for new restaurant-->
+      <a href="./restaurants/new" class="btn btn-secondary">Create</a>
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
@@ -42,10 +42,15 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-              <a href="./restaurants/{{this._id}}" class="btn btn-info btn-sm">Detail</a>
-              <a href="./restaurants/{{this._id}}/edit" class="btn btn-info btn-sm">Edit</a>
-              <form action="./restaurants/{{this._id}}/delete" method="POST" style="display: inline;">
-                <button type="submit" class="btn btn-danger btn-sm">delete</button>
+            </div>
+            <div class="card-footer">
+              <a href="./restaurants/{{this._id}}">
+                <i class="fas fa-info p-2" style="color:gray"></i></a>
+              <a href="./restaurants/{{this._id}}/edit">
+                <i class="fas fa-pencil-alt p-2" style="color:gray"></i></a>
+              <form action="./restaurants/{{this._id}}/delete" method="POST"
+                style="display: inline; justify-content-end">
+                <button type="submit" class="btn btn-outline-danger btn-sm">delete</button>
               </form>
             </div>
           </div>

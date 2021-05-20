@@ -58,6 +58,12 @@ header {
   height: 180px;
 }
 
+/* 加入滑鼠hover效果 */
+.fa-info:hover,
+.fa-pencil-alt:hover {
+  color: rgb(206, 74, 74) !important;
+}
+
 .card-title{
   overflow:hidden;
   text-overflow:ellipsis;
