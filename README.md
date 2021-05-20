@@ -19,7 +19,7 @@
 6. 使用者可以刪除餐廳資料
 
 ## 專案畫面
-![](https://github.com/GUANYI608/Restaurant-list/blob/master/public/img/restaurants.jpg)
+![](https://github.com/GUANYI608/Restaurant-list/blob/master/public/img/restaurant_CRUD.jpg)
 
 ## 使用工具
 - 開發環境：Visual Studio Code
