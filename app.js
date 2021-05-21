@@ -101,7 +101,7 @@ app.post('/restaurants/:id/delete', (req, res) => {
 // 顯示搜尋結果
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter(restaurant => {
+  const restaurants = restaurantList.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
   })
   res.render('index', { restaurants: restaurants, keyword: keyword })
