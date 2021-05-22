@@ -32,7 +32,15 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // --------routes setting--------
-// 顯示所有餐廳資料
+// 顯示搜尋結果
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurants = restaurantList.filter(restaurant => {
+    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+  })
+  res.render('index', { restaurants: restaurants, keyword: keyword })
+})
+// 首頁
 app.get('/', (req, res) => {
   Restaurant.find() //取出model內的所有資料
     .lean()
@@ -97,14 +105,6 @@ app.post('/restaurants/:id/delete', (req, res) => {
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log('error'))
-})
-// 顯示搜尋結果
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurants = restaurantList.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
 // start and listen on the Express server

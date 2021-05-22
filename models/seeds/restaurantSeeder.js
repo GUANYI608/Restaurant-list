@@ -3,7 +3,7 @@ const Restaurant = require('../restaurant')
 // 參考同學作業上助教的指導載入json作為種子資料
 const restList = require('./restaurant.json')
 
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 db.on('error', () => {
