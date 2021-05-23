@@ -8,7 +8,7 @@ const restaurants = require('./modules/restaurants')
 
 // 將網址結構符合 / 字串的 request 導入home模組
 router.use('/', home)
-// 將網址結構符合 /restaurants 字串的 request 導入home模組
+// 將網址結構符合 /restaurants 字串的 request 導入restaurants模組
 router.use('/restaurants', restaurants)
 
 // 匯出路由模組

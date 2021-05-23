@@ -30,3 +30,4 @@
 - 圖示資源：Font Awesome
 - 資料庫：MongoDB
 - 資料庫圖形介面：Robo 3T
+- 路由語意化：Method-override
